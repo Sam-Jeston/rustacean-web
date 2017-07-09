@@ -9,6 +9,7 @@ pub fn get_posts() -> Vec<PostShort> {
 
     let connection = db::connection::establish_connection();
     let results = posts.select((id, title, caption, created_at, updated_at))
+        .order(id.desc())
         .load::<PostShort>(&connection)
         .expect("Error loading posts");
 

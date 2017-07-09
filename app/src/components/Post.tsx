@@ -1,11 +1,12 @@
 import * as React from "react";
-import { getPost, createPost } from '../services/posts'
+import { getPost } from '../services/posts'
 
 export class Post extends React.Component<any, {post: PostDef, postId: number}> {
   constructor(props: any) {
     super(props)
-    const pathLen = this.props.location.pathname.length
-    this.state = { post: {} as PostDef, postId: this.props.location.pathname[pathLen - 1] }
+    const split = this.props.location.pathname.split('/')
+    const splitLength = split.length
+    this.state = { post: {} as PostDef, postId: split[splitLength - 1] }
   }
 
   public async componentDidMount () {
@@ -13,16 +14,11 @@ export class Post extends React.Component<any, {post: PostDef, postId: number}> 
     this.setState({post})
   }
 
-  public createPost () {
-    createPost('post again', 'with a caption', 'and a body')
-  }
-
   render() {
     return (
       <div className="container">
         <h1 className="title is-2">{this.state.post.title}</h1>
-        <p>{this.state.post.body}</p>
-        <button className="button is-primary" onClick={() => this.createPost()}>create dummy post</button>
+        <div className="content" dangerouslySetInnerHTML={{__html: this.state.post.body}}/>
       </div>
     )
   }
