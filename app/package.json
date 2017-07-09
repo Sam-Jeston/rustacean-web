@@ -18,7 +18,13 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.1",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
-    "typescript": "^2.4.1"
+    "style-loader": "^0.18.2",
+    "typescript": "^2.4.1",
+    "url-loader": "^0.5.9"
   }
 }
