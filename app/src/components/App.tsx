@@ -2,16 +2,14 @@ import * as React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch,
+  Redirect
 } from 'react-router-dom'
-import { Hello } from './Hello'
+import { Home } from './Home'
 import { About } from './About'
+import { NotFound } from './NotFound'
 const rustacean = require('../../public/rustacean.png')
-
-// 'HelloProps' describes the shape of props.
-// State is never set so we use the 'undefined' type.
-
-// Add is is-active class next to navbar-menu to toggle for mobile
 
 const inactiveClasses = "navbar-menu"
 const activeClasses = "navbar-menu is-active"
@@ -58,8 +56,12 @@ export class App extends React.Component<any, {active: boolean}> {
               </div>
             </div>
           </nav>
-          <Route exact path="/" component={Hello}/>
-          <Route path="/about" component={About}/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/about" component={About}/>
+            <Route path="/404" component={NotFound}/>
+            <Redirect to="/404" />
+          </Switch>
         </div>
       </Router>
     )

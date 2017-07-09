@@ -13,6 +13,11 @@ fn about() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")
 }
 
+#[get("/404")]
+fn four_oh_four() -> io::Result<NamedFile> {
+    NamedFile::open("app/index.html")
+}
+
 #[get("/dist/<file..>")]
 fn dist_files(file: PathBuf) -> Option<NamedFile> {
   NamedFile::open(Path::new("app/dist/").join(file)).ok()
