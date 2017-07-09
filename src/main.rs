@@ -17,6 +17,7 @@ fn main() {
         .mount("/", routes![
             controllers::statics::index,
             controllers::statics::about,
+            controllers::statics::post,
             controllers::statics::four_oh_four,
             controllers::users::get_user,
             controllers::posts::get_posts,

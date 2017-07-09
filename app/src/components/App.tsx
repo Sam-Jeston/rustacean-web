@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import { Home } from './Home'
 import { About } from './About'
+import { Post } from './Post'
 import { NotFound } from './NotFound'
 const rustacean = require('../../public/rustacean.png')
 
@@ -32,8 +33,8 @@ export class App extends React.Component<any, {active: boolean}> {
         <div>
           <nav className="navbar is-transparent">
             <div className="navbar-brand">
-              <a className="navbar-item" href="https://techjeston.com">
-                <img src={`dist/${rustacean}`} alt="Rustaceans on the Web" width="70" height="52" />
+              <a className="navbar-item" href="https://rustontheweb.com">
+                <img src={`/dist/${rustacean}`} alt="Rustaceans on the Web" width="70" height="52" />
               </a>
 
               <div className="navbar-burger burger" data-target="navMenuExample" onClick={ () => this.toggleIsActive() }>
@@ -59,6 +60,7 @@ export class App extends React.Component<any, {active: boolean}> {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
+            <Route path="/post/:id" component={Post}/>
             <Route path="/404" component={NotFound}/>
             <Redirect to="/404" />
           </Switch>

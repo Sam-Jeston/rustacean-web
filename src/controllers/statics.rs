@@ -13,6 +13,11 @@ fn about() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")
 }
 
+#[get("/post/<post_id>")]
+fn post(post_id: i64) -> io::Result<NamedFile> {
+    NamedFile::open("app/index.html")
+}
+
 #[get("/404")]
 fn four_oh_four() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")

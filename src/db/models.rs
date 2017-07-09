@@ -16,3 +16,12 @@ pub struct Post {
     pub created_at: String,
     pub updated_at: String,
 }
+
+#[derive(Queryable, Serialize, Deserialize,  Debug, Clone)]
+pub struct PostShort {
+    pub id: i64,
+    pub title: String,
+    pub caption: String,
+    pub created_at: String,
+    pub updated_at: String,
+}
