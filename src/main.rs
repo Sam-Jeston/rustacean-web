@@ -16,9 +16,9 @@ fn main() {
     rocket::ignite()
         .mount("/", routes![
             controllers::statics::index,
+            controllers::statics::about,
             controllers::users::get_user,
-            controllers::statics::module_files,
-            controllers::statics::custom_files
+            controllers::statics::dist_files
         ])
         .catch(errors![controllers::statics::not_found])
         .launch();

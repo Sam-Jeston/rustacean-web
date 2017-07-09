@@ -8,13 +8,13 @@ fn index() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")
 }
 
-#[get("/node_modules/<file..>")]
-fn module_files(file: PathBuf) -> Option<NamedFile> {
-  NamedFile::open(Path::new("app/node_modules/").join(file)).ok()
+#[get("/about")]
+fn about() -> io::Result<NamedFile> {
+    NamedFile::open("app/index.html")
 }
 
 #[get("/dist/<file..>")]
-fn custom_files(file: PathBuf) -> Option<NamedFile> {
+fn dist_files(file: PathBuf) -> Option<NamedFile> {
   NamedFile::open(Path::new("app/dist/").join(file)).ok()
 }
 
