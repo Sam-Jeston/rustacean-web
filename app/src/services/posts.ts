@@ -10,5 +10,15 @@ export function getPosts() {
 }
 
 export function getPost(id: number) {
-  return axios.get(`/get_post/${id}`).then((d: AxiosData) => d.data)
+  return axios.get(`/post/${id}`).then((d: AxiosData) => d.data)
+}
+
+export function createPost(title: string, caption: string, body: string) {
+  return axios.post(`/post`, {
+    title,
+    caption,
+    body,
+    created_at: new Date(),
+    updated_at: new Date()
+  })
 }

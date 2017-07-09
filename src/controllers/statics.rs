@@ -13,8 +13,13 @@ fn about() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")
 }
 
-#[get("/post/<post_id>")]
+#[get("/posts/<post_id>")]
 fn post(post_id: i64) -> io::Result<NamedFile> {
+    NamedFile::open("app/index.html")
+}
+
+#[get("/admin")]
+fn admin() -> io::Result<NamedFile> {
     NamedFile::open("app/index.html")
 }
 

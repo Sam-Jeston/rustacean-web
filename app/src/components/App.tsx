@@ -9,6 +9,7 @@ import {
 import { Home } from './Home'
 import { About } from './About'
 import { Post } from './Post'
+import { Admin } from './Admin'
 import { NotFound } from './NotFound'
 const rustacean = require('../../public/rustacean.png')
 
@@ -48,6 +49,7 @@ export class App extends React.Component<any, {active: boolean}> {
               <div className="navbar-start">
                 <Link className="navbar-item" to="/">Home</Link>
                 <Link className="navbar-item" to="/about">About</Link>
+                <Link className="navbar-item" to="/admin">Admin</Link>
               </div>
 
               <div className="navbar-end">
@@ -60,7 +62,8 @@ export class App extends React.Component<any, {active: boolean}> {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route path="/post/:id" component={Post}/>
+            <Route path="/admin" component={Admin}/>
+            <Route path="/posts/:id" component={Post}/>
             <Route path="/404" component={NotFound}/>
             <Redirect to="/404" />
           </Switch>

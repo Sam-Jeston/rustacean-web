@@ -9,7 +9,7 @@ export class Home extends React.Component<any, HomeState> {
   }
 
   public navigate(targetId: number) {
-    this.props.history.push(`/post/${targetId}`)
+    this.props.history.push(`/posts/${targetId}`)
   }
 
   public async componentDidMount () {
@@ -19,16 +19,12 @@ export class Home extends React.Component<any, HomeState> {
 
   public renderPosts () {
     return this.state.posts.map((p: PostDef) => {
-      if (p) {
-        return (
-          <div id={p.id.toString()} key={p.id.toString()} className="box" style={{cursor: 'pointer'}} onClick={() => this.navigate(p.id)}>
-            <h2 className="title is-4">{p.title}</h2>
-            <p>{p.caption}</p>
-          </div>
-        )
-      } else {
-        return
-      }
+      return (
+        <div id={p.id.toString()} key={p.id.toString()} className="box" style={{cursor: 'pointer'}} onClick={() => this.navigate(p.id)}>
+          <h2 className="title is-4">{p.title}</h2>
+          <p>{p.caption}</p>
+        </div>
+      )
     })
   }
 
@@ -43,6 +39,7 @@ export class Home extends React.Component<any, HomeState> {
         <p>Here at <a href="https://rustontheweb.com/">Rust On The Web</a> I write articles about creating web applications with Rust, and all examples are built into the site!</p>
         <br />
         {this.renderPosts()}
+        <br />
       </div>
     )
   }

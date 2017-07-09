@@ -18,9 +18,12 @@ fn main() {
             controllers::statics::index,
             controllers::statics::about,
             controllers::statics::post,
+            controllers::statics::admin,
             controllers::statics::four_oh_four,
             controllers::users::get_user,
             controllers::posts::get_posts,
+            controllers::posts::get_post,
+            controllers::posts::create_post,
             controllers::statics::dist_files
         ])
         .catch(errors![controllers::statics::not_found])
