@@ -19,6 +19,7 @@ fn main() {
             controllers::statics::about,
             controllers::statics::four_oh_four,
             controllers::users::get_user,
+            controllers::posts::get_posts,
             controllers::statics::dist_files
         ])
         .catch(errors![controllers::statics::not_found])

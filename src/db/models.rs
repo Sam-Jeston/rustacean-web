@@ -6,3 +6,13 @@ pub struct User {
     pub created_at: String,
     pub updated_at: String,
 }
+
+#[derive(Queryable, Serialize, Deserialize,  Debug, Clone)]
+pub struct Post {
+    pub id: i64,
+    pub title: String,
+    pub caption: String,
+    pub body: String,
+    pub created_at: String,
+    pub updated_at: String,
+}
