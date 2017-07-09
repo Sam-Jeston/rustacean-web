@@ -2,33 +2,22 @@
 #![plugin(rocket_codegen)]
 #[macro_use] extern crate diesel_codegen;
 #[macro_use] extern crate diesel;
+#[macro_use] extern crate rocket_contrib;
+#[macro_use] extern crate serde_derive;
+extern crate serde_json;
 extern crate dotenv;
 extern crate rocket;
 
-use db::models::*;
-use diesel::prelude::*;
-
 mod db;
-
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}
+mod controllers;
+mod services;
 
 fn main() {
-    use db::schema::users::dsl::*;
-
-    let connection = db::connection::establish_connection();
-    let results = users.limit(5)
-        .load::<User>(&connection)
-        .expect("Error loading Users");
-
-    println!("Displaying {} users", results.len());
-    for user in results {
-        println!("{}", user.username);
-        println!("----------\n");
-        println!("{}", user.password);
-    }
-
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite()
+        .mount("/", routes![
+            controllers::statics::index,
+            controllers::users::get_user
+        ])
+        .catch(errors![controllers::statics::not_found])
+        .launch();
 }
